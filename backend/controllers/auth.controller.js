@@ -26,7 +26,7 @@ export const createAccount = async (req, res) => {
 
         return res.status(200).send("OK")
     } catch (error) {
-        return res.status(500).json({ error: "Error al crear el usuario. Contacta con el admin" })
+        return res.status(500).json({ error: "Error al crear el usuario: " + error.message })
     }
 }
 

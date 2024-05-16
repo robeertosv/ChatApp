@@ -2,24 +2,24 @@ import mongoose from "mongoose";
 
 const model = new mongoose.Schema({
     username: {
-        type: 'String',
+        type: String,
         required: true,
         unique: true
     },
     fullname: {
-        type: 'String',
+        type: String,
         required: true
     },
     password: {
-        type: 'String',
+        type: String,
         required: true
     },
     phone: {
-        type: 'Integer',
+        type: Number,
         required: true
     },
     profilePic: {
-        type: 'String',
+        type: String,
         required: false
     }
 })
