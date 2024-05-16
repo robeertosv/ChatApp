@@ -17,9 +17,11 @@ app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/conv', convRoutes)
 
+app.use('../frontend/build')
+
 
 app.get('/', (req, res) => {
-    res.send("Página principal")
+    res.send('../frontend/build/index.html')
 })
 
 app.listen(PORT, () => {
