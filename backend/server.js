@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 
 import authRoutes from './routes/auth.routes.js'
+import connectDB from './db/connectMongo.js';
 
 dotenv.config();
 
@@ -15,5 +16,6 @@ app.get('/', (req, res) => {
 })
 
 app.listen(PORT, () => {
+    connectDB();
     console.log(`http://127.0.0.1:${PORT}`)
 })
