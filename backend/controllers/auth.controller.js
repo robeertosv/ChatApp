@@ -40,20 +40,28 @@ export const login = async (req, res) => {
         const existeElUser = await User.findOne({ username });
         if (!existeElUser) return res.status(404).json({ error: "No se encontró al usuario" })
 
+        const user = await User.findOne({ username })
+
         const correctPass = await bcrypt.compare(password, user?.password || "");
 
         if (!correctPass) return res.status(403).send({ error: "La contraseña no es correcta" })
 
-        const cookie = generateTokenAndCookie(user._id, res);
+        generateTokenAndCookie(user._id, res);
 
         return res.status(200).send("OK");
     } catch (error) {
-        return res.status(500).json({ error: "Error al hacer el login" })
+        return res.status(500).json({ error: "Error al hacer el login: " + error.message })
     }
 }
 
 export const logout = async (req, res) => {
-
+    try {
+        res.cookie("sessionToken", "", {maxAge: 0})
+        return res.status(200).send("OK")
+    } catch (error) {
+        return res.status(500).error({ error: "Error al hacer logout: " + error.message })
+    }
+    
 }
 
 export const deleteAccount = async (req, res) => {
