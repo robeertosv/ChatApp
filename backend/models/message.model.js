@@ -9,7 +9,7 @@ const model = new mongoose.Schema({
         type: String,
         required: true
     },
-    red: {
+    read: {
         type: Boolean,
         required: true
     },
@@ -19,3 +19,7 @@ const model = new mongoose.Schema({
         required: true
     }
 })
+
+const Message = mongoose.model("Message", model);
+
+export default Message;
