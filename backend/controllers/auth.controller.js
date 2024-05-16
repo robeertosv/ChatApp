@@ -11,7 +11,7 @@ export const createAccount = async (req, res) => {
         
         if(password != confirmPassword || password.length < 8) return res.status(400).json({ error: "La contraseña es muy corta" })
 
-        const salt = await bcrypt.salt(10);
+        const salt = await bcrypt.genSalt(10);
         const hashedPass = await bcrypt.hash(password, salt);
 
         const newUser = new User({
@@ -26,7 +26,9 @@ export const createAccount = async (req, res) => {
 
         return res.status(200).send("OK")
     } catch (error) {
+        console.log(error)
         return res.status(500).json({ error: "Error al crear el usuario: " + error.message })
+        
     }
 }
 
