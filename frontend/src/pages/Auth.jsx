@@ -7,16 +7,13 @@ const Auth = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    function updateUsername(e) {
-        setUsername(e.target.value)
-    }
-
+    function updateUsername(e) { setUsername(e.target.value) }
     function updatePassword(e) { setPassword(e.target.value) }
 
     async function login(e) {
         e.preventDefault();
         let res = await query('http://127.0.0.1/api/auth/login', 'POST', { username, password })
-        
+
         if (res == 'OK') {
             window.location.replace('/')
         } else {
