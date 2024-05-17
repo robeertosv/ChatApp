@@ -16,6 +16,7 @@ const Auth = () => {
     async function login(e) {
         e.preventDefault();
         let res = await query('http://127.0.0.1/api/auth/login', 'POST', { username, password })
+        
         if (res == 'OK') {
             window.location.replace('/')
         } else {
