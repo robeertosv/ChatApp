@@ -3,7 +3,7 @@ import { createAccount, login, logout, deleteAccount, validateAuth } from '../co
 
 const router = express.Router();
 
-router.post('/resgister', createAccount)
+router.post('/register', createAccount)
 router.post('/login', login)
 router.post('/logout', logout)
 router.delete('/deleteAccount', deleteAccount)

@@ -1,0 +1,109 @@
+.container {
+    background: url('https://cdn.pixabay.com/photo/2020/05/19/12/59/phone-5190643_1280.jpg');
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    form {
+        label {
+            color:#353535;
+            font-size: 20px;
+        }
+        h1{
+            text-align: center;
+            color: #353535;
+        }
+        .formContent {
+            height: 100%;
+            display:grid;
+            grid-template-rows: 0.5fr 0.5fr 0.2fr;
+            justify-content: center;
+
+            div {
+                margin: 2vw;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 2vw;
+
+                input {
+                    font-size: 25px;
+                    border: 0; outline: 0;
+                    background: transparent;
+                    padding: 5px; margin: 10px;
+                    border-bottom: 3px solid #353535;
+                    transition: 0.2s
+                }
+                input:focus {
+                    transition: 0.2s;
+                    border-bottom: 5px solid #eee;
+                }
+            }
+        }
+ 
+        .formContentRegister {
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;        
+            justify-content: center;
+
+            div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 2vw;
+
+                input {
+                    font-size: 25px;
+                    border: 0; outline: 0;
+                    background: transparent;
+                    padding: 5px; margin: 10px;
+                    border-bottom: 3px solid #353535;
+                    transition: 0.2s
+                }
+                input:focus {
+                    transition: 0.2s;
+                    border-bottom: 5px solid #eee;
+                }
+            }
+        }
+ 
+        button {
+            height: 100%;   
+            border: 0;
+            outline: 0;
+            background: #353535;
+            color: #eee;
+            font-weight: 600;
+            font-size: 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+            padding: 10px;
+            margin: 0 25vw;
+        }
+
+        button:hover {
+            transition: 0.2s;
+            color: #353535;
+            background: #eee;
+            font-size: 30px;
+            height: 100%;
+        }
+
+        padding: 25px;
+        background: #eeea;
+        backdrop-filter: blur(5px);
+        box-shadow: #eee 1px 1px 20px;
+        height: 75vh;
+        width: 75vw;
+        border-radius: 50px;
+
+        display: flex;
+        flex-direction: column;
+    
+    }
+}
