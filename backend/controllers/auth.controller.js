@@ -79,13 +79,6 @@ export const deleteAccount = async (req, res) => {
     }
 }
 
-export const validateAuth = async (req, res, next) => {
-    //const {username} = req.body;
-
-    const username = 'roberto'
-
-    const user = await User.findOne({username})
-
-    if(!user) return res.status(401).json({error: "Usuario inexistente"});
-    checkSign(req, res, next)
+export const validateAuth = async (req, res) => {
+    checkSign(req, res)
 }
