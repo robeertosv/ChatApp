@@ -1,6 +1,7 @@
 import User from "../models/user.model.js"
 import bcrypt from 'bcrypt'
 import generateTokenAndCookie from "../utils/cookieGen.js";
+import checkSign from "../utils/checkSign.js";
 
 export const createAccount = async (req, res) => {
     try {
@@ -46,9 +47,11 @@ export const login = async (req, res) => {
 
         if (!correctPass) return res.status(403).send({ error: "La contraseña no es correcta" })
 
-        generateTokenAndCookie(user._id, res);
 
-        return res.status(200).send("OK");
+        generateTokenAndCookie(user._id, res);
+        return res.status(200).send("cookieCreated");
+
+
     } catch (error) {
         return res.status(500).json({ error: "Error al hacer el login: " + error.message })
     }
@@ -56,22 +59,33 @@ export const login = async (req, res) => {
 
 export const logout = async (req, res) => {
     try {
-        res.cookie("sessionToken", "", {maxAge: 0})
+        res.cookie("sessionToken", "", { maxAge: 0 })
         return res.status(200).send("OK")
     } catch (error) {
         return res.status(500).error({ error: "Error al hacer logout: " + error.message })
     }
-    
+
 }
 
 export const deleteAccount = async (req, res) => {
     try {
-        const {username} = req.body
-        res.cookie("sessionToken", "", {maxAge: 0}) //Logout
+        const { username } = req.body
+        res.cookie("sessionToken", "", { maxAge: 0 }) //Logout
         User.deleteOne({ username }).then(() => {
             return res.status(200).send("USER DELETED")
         })
     } catch (error) {
         return res.status(500).json({ error: "Error al eliminar al usuario: " + error.message })
     }
+}
+
+export const validateAuth = async (req, res, next) => {
+    //const {username} = req.body;
+
+    const username = 'roberto'
+
+    const user = await User.findOne({username})
+
+    if(!user) return res.status(401).json({error: "Usuario inexistente"});
+    checkSign(req, res, next)
 }

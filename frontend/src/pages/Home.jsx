@@ -1,9 +1,16 @@
 import '../styles/Home.scss'
+import { useEffect } from 'react';
 
 const Home = () => {
-  /*if(!document.cookie) {
-    window.location.replace('/login')
-  }*/
+
+  useEffect(() => {
+    fetch("http://127.0.0.1/api/auth/validateAuth")
+      .then((response) => response.json())
+      .then((user) => {
+        if(!user._id) window.location.replace('/login');
+      });
+  }, []);
+
   return (
     <div className="container">
         <h1>Chat</h1>

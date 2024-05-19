@@ -1,6 +1,6 @@
 import '../styles/Auth.scss'
 import query from '../handler/query';
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 
 const Auth = () => {
     const type = window.location.pathname.split('/')[1];
@@ -22,7 +22,16 @@ const Auth = () => {
 
     }
 
+    useEffect(() => {
+        fetch("http://127.0.0.1/api/auth/validateAuth")
+          .then((response) => response.json())
+          .then((user) => {
+            if(user._id) window.location.replace('/');
+          });
+      }, []);
+
     if (type == 'login') {
+        
         return (
             <div className="container">
                 <form onSubmit={login}>
