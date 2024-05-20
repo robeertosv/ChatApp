@@ -1,0 +1,26 @@
+.chatPreview {
+    background: #353535;
+    color: #eee;
+    padding: 20px 10px;
+
+    .inlineContent {
+        display: grid;
+        grid-template-columns: 0.2fr 1.25fr 0.2fr;
+        vertical-align: middle;
+        align-items: center;
+
+        img {
+            width: 33px;
+            height: 33px;
+            border-radius: 50%;
+        }
+        
+    }
+
+    .lastMessage {
+        position: relative;
+        top: 10px;
+        left: 43px;
+        font-style: italic;
+    }
+}

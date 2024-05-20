@@ -1,6 +1,27 @@
-.container {
-    background: darkblue;
-    color: #eee;
-    height: 100vh;
-    width: 100vw;
+.chatContainer {
+    
+    .header{
+        background: yellow;
+        height: 10vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .chat {
+        background: aqua;
+        height: 90vh;
+        display: flex;
+
+        .chatList {
+            background: red;
+            height: 90vh;
+            width: 25vw
+        }
+        .conversation{
+            background: green;
+            height: 90vh;
+            width: 75vw;
+        }
+    }
 }

@@ -34,8 +34,10 @@ export const getConv = async(req, res) => {
 export const getAllConvs = async (req, res) => {
     try {
         const {username} = req.body; 
+        
         const user = await User.findOne({ username })
         const UID = user._id;
+        
         let allConvs = await Conversation.find();
         let convs = []
 
